@@ -1,0 +1,31 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-sage: #5b8266;
+  --color-brand-sage-dark: #4a7c59;
+  --color-brand-sage-light: #e8efea;
+
+  --color-brand-navy: #1a2e40;
+  --color-brand-navy-light: #2a455e;
+
+  --color-brand-warm: #fdfbf7;
+  --color-brand-sand: #f4efea;
+
+  --color-brand-terracotta: #d97757;
+  --color-brand-terracotta-hover: #c56344;
+}
+
+body {
+  background-color: var(--color-brand-warm);
+  color: var(--color-brand-navy);
+  font-family:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    Oxygen,
+    Ubuntu,
+    Cantarell,
+    sans-serif;
+}
