@@ -113,3 +113,4 @@ export const Hero = ({ onBookingClick }) => {
     </section>
   );
 };
+export default Hero;

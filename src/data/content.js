@@ -1,9 +1,15 @@
 // src/data/content.js
 import HeroPic from "../images/HeroPic.avif";
+import AboutMePic from "../images/AboutMePic.avif";
+import GalleryPic1 from "../images/Gallery-1.avif";
+import GalleryPic2 from "../images/Gallery-2.avif";
+import GalleryPic3 from "../images/Gallery-3.avif";
+import GalleryPic4 from "../images/Gallery-4.avif";
+
 export const psychologistData = {
   profile: {
-    name: "Mtro. Alejandro Ramos",
-    title: "Psicóloga Clínica y Terapeuta Cognitivo-Conductual",
+    name: "Alejandro Ramos",
+    title: "Psicólogo Clínico y Terapeuta Cognitivo-Conductual",
     license: "Cédula Prof. 8492019 / Reg. Sanitario 49201",
     tagline:
       "Un espacio seguro para sanar, reencontrarte y recuperar tu equilibrio emocional.",
@@ -12,6 +18,7 @@ export const psychologistData = {
     location:
       "Consultorio Presencial en Zapopan, Jal. | Sesiones en Línea a todo el mundo",
     photo: HeroPic,
+    photoAbout: AboutMePic,
   },
 
   hero: {
@@ -60,7 +67,7 @@ export const psychologistData = {
   ],
 
   about: {
-    title: "Hola, soy la Mtra. Elena",
+    title: "Hola, soy la Alejandro Ramos",
     bio: [
       "Sé que dar el primer paso para ir a terapia puede generar dudas. Mi compromiso es brindarte un ambiente cálido, libre de juicios y totalmente confidencial donde te sientas escuchado y respaldado desde la primera sesión.",
       "Mi enfoque se basa en la Terapia Cognitivo-Conductual (TCC), combinada con técnicas de Aceptación y Compromiso, lo que nos permite no solo entender el origen de tus malestares, sino también trabajar con herramientas aplicables a tu día a día.",
@@ -112,7 +119,7 @@ export const psychologistData = {
     {
       id: 1,
       quote:
-        "Llegué a consulta con crisis de ansiedad frecuentes. Elena me dio herramientas que realmente me sirvieron en mi trabajo y día a día. Hoy me siento con el control de mi vida.",
+        "Llegué a consulta con crisis de ansiedad frecuentes. Alejandro me dio herramientas que realmente me sirvieron en mi trabajo y día a día. Hoy me siento con el control de mi vida.",
       author: "Carlos M.",
       detail: "Paciente de Terapia Individual (8 meses)",
       rating: 5,
@@ -120,7 +127,7 @@ export const psychologistData = {
     {
       id: 2,
       quote:
-        "La modalidad en línea se me acomoda perfecto por mis horarios. Es una profesional muy empática y acertada. Siento un cambio enorme en mi autoestima.",
+        "La modalidad en línea se me acomoda perfecto por mis horarios. Es un profesional muy empático y acertado. Siento un cambio enorme en mi autoestima.",
       author: "Mariana R.",
       detail: "Paciente Online",
       rating: 5,
@@ -178,6 +185,35 @@ export const psychologistData = {
       "06:00 PM",
       "07:30 PM",
     ],
-    whatsappContact: "5213300000000",
+    whatsappContact: "3327825329",
+  },
+  // Agregar dentro de export const psychologistData = { ... }
+
+  gallery: {
+    title: "Conoce el Consultorio",
+    subtitle:
+      "Un entorno diseñado para brindarte comodidad, privacidad y tranquilidad durante tu proceso.",
+    images: [
+      {
+        id: 1,
+        src: GalleryPic1,
+        caption: "Espacio de consulta presencial",
+      },
+      {
+        id: 2,
+        src: GalleryPic2,
+        caption: "Atención cálida y profesional",
+      },
+      {
+        id: 3,
+        src: GalleryPic3,
+        caption: "Recepción y sala de espera",
+      },
+      {
+        id: 4,
+        src: GalleryPic4,
+        caption: "Sesiones en línea con equipo profesional",
+      },
+    ],
   },
 };
