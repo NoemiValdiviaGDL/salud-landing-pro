@@ -40,10 +40,10 @@ export const Navbar = ({ onBookingClick }) => {
               Servicios
             </a>
             <a
-              href="#booking"
+              href="#gallery"
               className="hover:text-brand-sage transition-colors"
             >
-              Agendar
+              Instalaciones
             </a>
           </nav>
 

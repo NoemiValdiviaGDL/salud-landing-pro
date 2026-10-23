@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Hero from "./components/sections/Hero.jsx";
 import BookingSection from "./components/sections/BookingSection.jsx";
 import AboutMe from "./components/sections/AboutMe.jsx";
@@ -11,24 +12,21 @@ import Gallery from "./components/sections/Gallery.jsx";
 import WhatsAppButton from "./components/ui/WhatsAppButoon.jsx";
 
 function App() {
-  const scrollToBooking = () => {
-    const bookingElement = document.getElementById("booking");
-    if (bookingElement) {
-      bookingElement.scrollIntoView({ behavior: "smooth" });
-    }
-  };
+  const [isBookingOpen, setIsBookingOpen] = useState(false);
+  const handleOpenBooking = () => setIsBookingOpen(true);
+  const handleCloseBooking = () => setIsBookingOpen(false);
   return (
     <div className="min-h-screen bg-brand-warm text-brand-navy flex flex-col font-sans">
-      <Navbar onBookingClick={scrollToBooking} />
+      <Navbar onBookingClick={handleOpenBooking} />
 
       <main className="flex-grow">
-        <Hero onBookingClick={scrollToBooking} />
+        <Hero onBookingClick={handleOpenBooking} />
         <Benefits />
         <AboutMe />
         <Gallery />
-        <Services onBookingClick={scrollToBooking} />
+        <Services onBookingClick={handleOpenBooking} />
         <Testimonials />
-        <BookingSection />
+        <BookingSection isOpen={isBookingOpen} onClose={handleCloseBooking} />
         <FAQ />
       </main>
 

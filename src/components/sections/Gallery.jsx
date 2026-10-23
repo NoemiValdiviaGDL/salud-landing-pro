@@ -4,15 +4,15 @@ import { Camera, MapPin } from "lucide-react";
 import { psychologistData } from "../../data/content";
 
 export const Gallery = () => {
-  const { gallery, profile } = psychologistData;
+  const { gallery } = psychologistData;
 
   if (!gallery) return null;
 
   return (
-    <section className="py-16 md:py-24 bg-brand-warm relative">
+    <section id="gallery" className="py-16 md:py-24 bg-brand-warm relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Encabezado */}
-        <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
+        <div className="text-center max-w-3xl mx-auto mb-10 space-y-4">
           <span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-brand-sage-dark bg-brand-sage-light px-3.5 py-1.5 rounded-full">
             <Camera className="w-4 h-4" />
             <span>Instalaciones y Espacio</span>
@@ -25,20 +25,20 @@ export const Gallery = () => {
           </p>
         </div>
 
-        {/* Grilla de Imágenes */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {/* Galería Horizontal (Deslizable en móviles / Fila o Grilla en Desktop) */}
+        <div className="flex sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 overflow-x-auto snap-x snap-mandatory pb-4 sm:pb-0 scrollbar-none -mx-4 px-4 sm:mx-0 sm:px-0">
           {gallery.images.map((img) => (
             <div
               key={img.id}
-              className="group relative aspect-[4/3] rounded-2xl overflow-hidden bg-brand-sand border border-brand-navy/10 shadow-sm hover:shadow-md transition-all duration-300"
+              className="flex-none w-[80vw] sm:w-auto snap-center group relative aspect-[4/3] rounded-2xl overflow-hidden bg-brand-sand border border-brand-navy/10 shadow-sm hover:shadow-md transition-all duration-300"
             >
               <img
                 src={img.src}
                 alt={img.caption}
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
               />
-              {/* Overlay suave con pie de foto */}
-              <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+              {/* Overlay con descripción */}
+              <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/80 via-transparent to-transparent opacity-90 sm:opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
                 <p className="text-xs font-semibold text-white tracking-wide">
                   {img.caption}
                 </p>
@@ -47,8 +47,13 @@ export const Gallery = () => {
           ))}
         </div>
 
+        {/* Indicador visual de deslizamiento solo para móviles */}
+        <p className="text-center text-xs text-brand-navy/50 mt-2 sm:hidden">
+          ← Desliza para ver más fotos →
+        </p>
+
         {/* Detalle de ubicación */}
-        <div className="mt-10 text-center flex items-center justify-center gap-2 text-xs sm:text-sm text-brand-navy/70">
+        <div className="mt-8 text-center flex items-center justify-center gap-2 text-xs sm:text-sm text-brand-navy/70">
           <MapPin className="w-4 h-4 text-brand-sage" />
           <span>
             Ubicados en zona accesible con estacionamiento en Zapopan, Jalisco.

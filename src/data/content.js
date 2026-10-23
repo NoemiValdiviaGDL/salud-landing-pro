@@ -2,7 +2,7 @@
 import HeroPic from "../images/HeroPic.avif";
 import AboutMePic from "../images/AboutMePic.avif";
 import GalleryPic1 from "../images/Gallery-1.avif";
-import GalleryPic2 from "../images/Gallery-2.avif";
+import GalleryPic2 from "../images/Gallery-2.jpg";
 import GalleryPic3 from "../images/Gallery-3.avif";
 import GalleryPic4 from "../images/Gallery-4.avif";
 
@@ -89,7 +89,7 @@ export const psychologistData = {
         "Proceso enfocado en tus necesidades específicas: ansiedad, autoestima, toma de decisiones o bienestar emocional.",
       duration: "50 minutos",
       modality: "Presencial u Online",
-      price: "$750 MXN",
+      price: "$500 MXN",
       popular: true,
       features: [
         "Evaluación inicial personalizada",
@@ -105,7 +105,7 @@ export const psychologistData = {
         "Espacio neutral para mejorar la comunicación, resolver conflictos recurrentes y reconstruir la confianza.",
       duration: "70 minutos",
       modality: "Presencial u Online",
-      price: "$1,100 MXN",
+      price: "$900 MXN",
       popular: false,
       features: [
         "Dinámicas de comunicación asertiva",
@@ -196,22 +196,22 @@ export const psychologistData = {
     images: [
       {
         id: 1,
-        src: GalleryPic1,
+        src: GalleryPic4,
         caption: "Espacio de consulta presencial",
       },
       {
         id: 2,
-        src: GalleryPic2,
+        src: GalleryPic3,
         caption: "Atención cálida y profesional",
       },
       {
         id: 3,
-        src: GalleryPic3,
+        src: GalleryPic2,
         caption: "Recepción y sala de espera",
       },
       {
         id: 4,
-        src: GalleryPic4,
+        src: GalleryPic1,
         caption: "Sesiones en línea con equipo profesional",
       },
     ],

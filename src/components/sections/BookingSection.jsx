@@ -2,6 +2,7 @@
 import React, { useEffect } from "react";
 import Cal, { getCalApi } from "@calcom/embed-react";
 import {
+  X,
   Calendar as CalendarIcon,
   ShieldCheck,
   Clock,
@@ -9,46 +10,63 @@ import {
 } from "lucide-react";
 import { psychologistData } from "../../data/content";
 
-export const BookingSection = () => {
+export const BookingSection = ({ isOpen, onClose }) => {
   const { bookingConfig, profile } = psychologistData;
 
   useEffect(() => {
-    (async function () {
-      const cal = await getCalApi();
-      cal("ui", {
-        theme: "light",
-        styles: {
-          branding: {
-            brandColor: "#5B8266", // Verde Salvia de tu paleta
+    if (isOpen) {
+      (async function () {
+        const cal = await getCalApi();
+        cal("ui", {
+          theme: "light",
+          styles: {
+            branding: {
+              brandColor: "#5B8266",
+            },
           },
-        },
-        hideEventTypeDetails: false,
-        layout: "month_view",
-      });
-    })();
-  }, []);
+          hideEventTypeDetails: false,
+          layout: "month_view",
+        });
+      })();
+    }
+  }, [isOpen]);
 
+  // Si el modal está cerrado, no renderiza nada
+  if (!isOpen) return null;
   return (
-    <section id="booking" className="py-16 md:py-24 bg-brand-warm relative">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Encabezado */}
-        <div className="text-center max-w-2xl mx-auto mb-10 space-y-3">
-          <span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-brand-sage-dark bg-brand-sage-light px-3.5 py-1.5 rounded-full">
-            <CalendarIcon className="w-4 h-4" />
-            <span>Disponibilidad en Tiempo Real</span>
-          </span>
-          <h2 className="text-3xl sm:text-4xl font-bold text-brand-navy tracking-tight">
-            {bookingConfig.title}
-          </h2>
-          <p className="text-base text-brand-navy/75">
-            Selecciona la modalidad, el día y la hora. La cita se agendará y
-            sincronizará directamente en Google Calendar.
-          </p>
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-brand-navy/60 backdrop-blur-sm animate-fadeIn">
+      {/* Fondo clickeable para cerrar */}
+      <div className="absolute inset-0" onClick={onClose} />
+
+      {/* Contenido del Modal */}
+      <div className="relative w-full max-w-4xl max-h-[90vh] bg-white rounded-3xl shadow-2xl border border-brand-navy/10 overflow-hidden flex flex-col z-10 animate-scaleUp">
+        {/* Cabecera del Modal con Botón de Cerrar */}
+        <div className="flex items-center justify-between p-6 border-b border-brand-sand bg-brand-warm">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-xl bg-brand-sage-light text-brand-sage-dark flex items-center justify-center">
+              <CalendarIcon className="w-5 h-5" />
+            </div>
+            <div>
+              <h3 className="font-bold text-brand-navy text-lg leading-tight">
+                {bookingConfig.title}
+              </h3>
+              <p className="text-xs text-brand-navy/60">
+                Selecciona la fecha y hora que mejor te acomode
+              </p>
+            </div>
+          </div>
+
+          <button
+            onClick={onClose}
+            className="p-2 rounded-full hover:bg-brand-sand text-brand-navy/60 hover:text-brand-navy transition-colors cursor-pointer"
+            aria-label="Cerrar modal"
+          >
+            <X className="w-6 h-6" />
+          </button>
         </div>
 
-        {/* Tarjeta contenedora del Calendario */}
-        <div className="bg-white rounded-3xl p-2 sm:p-6 shadow-sm border border-brand-navy/10 overflow-hidden">
-          {/* Widget interactivo de Cal.com */}
+        {/* Contenido Scrollable con Cal.com Embed */}
+        <div className="p-4 sm:p-6 overflow-y-auto flex-grow">
           <Cal
             calLink="https://cal.com/noemi-valdivia-garcia-etbevl/terapia-picologica" // 👈 Cambiar por el link real de Cal.com del cliente
             style={{
@@ -59,25 +77,26 @@ export const BookingSection = () => {
             }}
             config={{ layout: "month_view", theme: "light" }}
           />
+          ;
         </div>
 
-        {/* Garantías debajo del calendario */}
-        <div className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-4 text-center text-xs text-brand-navy/70">
-          <div className="flex items-center justify-center gap-2">
-            <CheckCircle2 className="w-4 h-4 text-brand-sage" />
-            <span>Confirmación e invitación de Google Meet inmediata</span>
+        {/* Pie de Garantías */}
+        <div className="p-4 bg-brand-sand/40 border-t border-brand-navy/5 grid grid-cols-1 sm:grid-cols-3 gap-2 text-center text-xs text-brand-navy/70">
+          <div className="flex items-center justify-center gap-1.5">
+            <CheckCircle2 className="w-3.5 h-3.5 text-brand-sage shrink-0" />
+            <span>Confirmación inmediata por Google Meet</span>
           </div>
-          <div className="flex items-center justify-center gap-2">
-            <ShieldCheck className="w-4 h-4 text-brand-sage" />
-            <span>Sincronización anti-traslapes con Google Calendar</span>
+          <div className="flex items-center justify-center gap-1.5">
+            <ShieldCheck className="w-3.5 h-3.5 text-brand-sage shrink-0" />
+            <span>Sincronización con Google Calendar</span>
           </div>
-          <div className="flex items-center justify-center gap-2">
-            <Clock className="w-4 h-4 text-brand-sage" />
-            <span>Recordatorios automáticos a tu correo</span>
+          <div className="flex items-center justify-center gap-1.5">
+            <Clock className="w-3.5 h-3.5 text-brand-sage shrink-0" />
+            <span>Recordatorios automáticos</span>
           </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 };
 
