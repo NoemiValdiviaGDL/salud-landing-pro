@@ -1,10 +1,10 @@
 // src/data/content.js
-import HeroPic from "../images/HeroPic.avif";
-import AboutMePic from "../images/AboutMePic.avif";
-import GalleryPic1 from "../images/Gallery-1.avif";
-import GalleryPic2 from "../images/Gallery-2.jpg";
-import GalleryPic3 from "../images/Gallery-3.avif";
-import GalleryPic4 from "../images/Gallery-4.avif";
+import HeroPic from "../assets/images/HeroPic.avif";
+import AboutMePic from "../assets/images/AboutMePic.avif";
+import GalleryPic1 from "../assets/images/Gallery-1.avif";
+import GalleryPic2 from "../assets/images/Gallery-2.jpg";
+import GalleryPic3 from "../assets/images/Gallery-3.avif";
+import GalleryPic4 from "../assets/images/Gallery-4.avif";
 
 export const psychologistData = {
   profile: {
