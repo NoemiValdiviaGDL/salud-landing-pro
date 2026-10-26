@@ -10,6 +10,7 @@ import Benefits from "./components/sections/Benefits.jsx";
 import Services from "./components/sections/Services.jsx";
 import Gallery from "./components/sections/Gallery.jsx";
 import WhatsAppButton from "./components/ui/WhatsAppButoon.jsx";
+import CallButtonfrom, { CallButton } from "./components/ui/CallButton.jsx";
 
 function App() {
   const [isBookingOpen, setIsBookingOpen] = useState(false);
@@ -31,6 +32,7 @@ function App() {
       </main>
 
       <Footer />
+      <CallButton />
       <WhatsAppButton />
     </div>
   );
