@@ -11,7 +11,7 @@ import Services from "./components/sections/Services.jsx";
 import Gallery from "./components/sections/Gallery.jsx";
 import WhatsAppButton from "./components/ui/WhatsAppButoon.jsx";
 import CallButtonfrom, { CallButton } from "./components/ui/CallButton.jsx";
-
+import Reveal from "./components/ui/Reveal.jsx";
 function App() {
   const [isBookingOpen, setIsBookingOpen] = useState(false);
   const handleOpenBooking = () => setIsBookingOpen(true);
@@ -21,6 +21,7 @@ function App() {
       <Navbar onBookingClick={handleOpenBooking} />
 
       <main className="flex-grow">
+        <Reveal />
         <Hero onBookingClick={handleOpenBooking} />
         <Benefits />
         <AboutMe />

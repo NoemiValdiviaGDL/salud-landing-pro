@@ -1,31 +1,55 @@
+/* src/index.css */
 @import "tailwindcss";
 
 @theme {
-  --color-brand-sage: #5b8266;
-  --color-brand-sage-dark: #4a7c59;
-  --color-brand-sage-light: #e8efea;
+  /* Nueva Paleta Oceánica & Botánica */
+  --color-brand-cobalt: #0c2982; /* Textos oscuros, footer, autoridad */
+  --color-brand-cobalt-light: #163aa8; /* Hover botones secundarios */
+  --color-brand-ocean: #0c4f82; /* Acento secundario, bordes profundos */
+  --color-brand-teal: #0c7481; /* Íconos, subtítulos, badges */
+  --color-brand-emerald: #0c8269; /* CTA Principal, acciones clave */
+  --color-brand-emerald-hover: #096652; /* Hover CTA Principal */
+  --color-brand-forest: #0c8241; /* Indicadores positivos, checks */
 
-  --color-brand-navy: #1a2e40;
-  --color-brand-navy-light: #2a455e;
-
-  --color-brand-warm: #fdfbf7;
-  --color-brand-sand: #f4efea;
-
-  --color-brand-terracotta: #d97757;
-  --color-brand-terracotta-hover: #c56344;
+  /* Superficies claras derivadas para descanso visual */
+  --color-brand-mist: #f4f9f9; /* Fondo principal suave */
+  --color-brand-ice: #e6f2f3; /* Fondos de badges y tarjetas suaves */
+  --color-brand-surface: #ffffff; /* Tarjetas elevadas */
 }
 
-body {
-  background-color: var(--color-brand-warm);
-  color: var(--color-brand-navy);
-  font-family:
-    system-ui,
-    -apple-system,
-    BlinkMacSystemFont,
-    "Segoe UI",
-    Roboto,
-    Oxygen,
-    Ubuntu,
-    Cantarell,
-    sans-serif;
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    background-color: var(--color-brand-mist);
+    color: var(--color-brand-cobalt);
+  }
+}
+
+/* Animaciones personalizadas para Modales y Micro-interacciones */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scaleUp {
+  from {
+    opacity: 0;
+    transform: scale(0.96) translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-scaleUp {
+  animation: scaleUp 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }

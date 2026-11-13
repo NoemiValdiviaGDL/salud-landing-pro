@@ -19,6 +19,10 @@ export const psychologistData = {
       "Consultorio Presencial en Zapopan, Jal. | Sesiones en Línea a todo el mundo",
     photo: HeroPic,
     photoAbout: AboutMePic,
+    location: "Av. Patria 1234, Zapopan, Jalisco", // tu dirección actual
+    mapEmbedUrl:
+      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3732.198!2d-103.41!3d20.71!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjDCsDQyJzM2LjAiTiAxMDPCsDI0JzM2LjAiVw!5e0!3m2!1ses-419!2smx!4v1700000000000", // 👈 Pega aquí tu URL de Google Maps -> Compartir -> Insertar un mapa
+    mapExternalUrl: "https://maps.google.com/?q=Zapopan,Jalisco", // 👈 Link
   },
 
   hero: {
