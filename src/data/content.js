@@ -220,4 +220,72 @@ export const psychologistData = {
       },
     ],
   },
+
+  credentialsSection: {
+    badge: "Respaldo Académico",
+    title: "Formación, Certificaciones y Actualización Continua",
+    subtitle:
+      "Cada proceso terapéutico está respaldado por preparación clínica rigurosa y formación especializada en enfoques basados en evidencia.",
+    items: [
+      {
+        id: 1,
+        category: "academica", // "academica" | "certificacion" | "curso"
+        categoryLabel: "Formación Académica",
+        title: "Licenciatura en Psicología Clínica",
+        institution: "Universidad de Guadalajara (UDG)",
+        year: "Cédula Profesional Vigente",
+        focus:
+          "Evaluación psicológica, diagnóstico clínico e intervención terapéutica.",
+      },
+      {
+        id: 2,
+        category: "certificacion",
+        categoryLabel: "Certificación",
+        title: "Diplomado en Terapia Cognitivo-Conductual (TCC)",
+        institution: "Instituto Mexicano de Psicoterapia",
+        year: "2023",
+        focus:
+          "Protocolos clínicos para ansiedad, depresión y regulación emocional.",
+      },
+      {
+        id: 3,
+        category: "certificacion",
+        categoryLabel: "Certificación",
+        title: "Especialización en Terapia de Pareja y Vínculos",
+        institution: "Centro de Estudios Sistémicos",
+        year: "2024",
+        focus:
+          "Comunicación asertiva, manejo de conflictos y reconstrucción de acuerdos.",
+      },
+      {
+        id: 4,
+        category: "curso",
+        categoryLabel: "Curso / Taller",
+        title: "Intervención en Crisis y Primeros Auxilios Psicológicos",
+        institution: "Universidad Nacional Autónoma de México (UNAM)",
+        year: "2024",
+        focus: "Contención emocional inmediata y acompañamiento en duelos.",
+      },
+      {
+        id: 5,
+        category: "curso",
+        categoryLabel: "Curso / Taller",
+        title: "Mindfulness y Terapias Contextuales (ACT)",
+        institution: "Asociación de Psicología Contextual",
+        year: "2025",
+        focus:
+          "Herramientas prácticas para reducir el estrés crónico y la rumiación.",
+      },
+      {
+        id: 6,
+        category: "certificacion",
+        categoryLabel: "Certificación",
+        title: "Ética Clínica y Confidencialidad en Telepsicología",
+        institution: "Colegio de Profesionales de la Psicología",
+        year: "2025",
+        focus:
+          "Estándares de seguridad y privacidad para atención terapéutica en línea.",
+      },
+    ],
+  },
 };

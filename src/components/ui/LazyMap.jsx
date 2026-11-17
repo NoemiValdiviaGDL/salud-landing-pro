@@ -8,48 +8,71 @@ export const LazyMap = ({ embedUrl, externalUrl, address }) => {
   const containerRef = useRef(null);
 
   useEffect(() => {
+    if (shouldLoad) return;
+
+    const triggerLoad = () => {
+      setShouldLoad(true);
+    };
+
+    // 1. Carga automática en cuanto el usuario interactúa (scroll o toque en pantalla)
+    window.addEventListener("scroll", triggerLoad, {
+      once: true,
+      passive: true,
+    });
+    window.addEventListener("touchstart", triggerLoad, {
+      once: true,
+      passive: true,
+    });
+
+    // 2. Respaldo por visibilidad en pantalla
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setShouldLoad(true);
+          triggerLoad();
           observer.disconnect();
         }
       },
-      // Empieza a cargar 350px antes de que el usuario llegue al footer
-      { rootMargin: "350px" },
+      { rootMargin: "500px" },
     );
 
-    if (containerRef.current) observer.observe(containerRef.current);
-    return () => observer.disconnect();
-  }, []);
+    if (containerRef.current) {
+      observer.observe(containerRef.current);
+    }
+
+    return () => {
+      window.removeEventListener("scroll", triggerLoad);
+      window.removeEventListener("touchstart", triggerLoad);
+      observer.disconnect();
+    };
+  }, [shouldLoad]);
 
   return (
     <div
       ref={containerRef}
-      className="relative w-full h-56 sm:h-64 rounded-2xl overflow-hidden bg-brand-ocean/30 border border-white/15 shadow-inner group"
+      className="relative w-full h-60 sm:h-64 rounded-2xl overflow-hidden bg-brand-ocean/30 border border-white/15 shadow-inner isolate"
     >
-      {/* Skeleton / Placeholder ultraligero mientras carga */}
+      {/* Fondo estático mientras carga por primera vez */}
       {!isLoaded && (
-        <div className="absolute inset-0 flex flex-col items-center justify-center p-4 text-center bg-gradient-to-br from-brand-ocean/40 to-brand-cobalt/60 animate-pulse">
-          <MapPin className="w-6 h-6 text-[#4FD1C5] mb-2" />
-          <span className="text-xs text-white/75 font-medium">
-            Cargando mapa del consultorio...
+        <div className="absolute inset-0 flex flex-col items-center justify-center p-4 text-center bg-gradient-to-br from-brand-ocean/40 to-brand-cobalt/60 pointer-events-none">
+          <MapPin className="w-6 h-6 text-[#4FD1C5] mb-2 animate-bounce" />
+          <span className="text-xs text-white/80 font-medium">
+            Cargando ubicación...
           </span>
         </div>
       )}
 
-      {/* Iframe inyectado solo al acercarse en el scroll */}
+      {/* Sin loading="lazy" para que móviles no lo descarguen de RAM al subir */}
       {shouldLoad && (
         <iframe
           src={embedUrl}
           title={`Ubicación: ${address}`}
-          loading="lazy"
           referrerPolicy="no-referrer-when-downgrade"
           onLoad={() => setIsLoaded(true)}
-          className={`w-full h-full border-0 transition-opacity duration-500 ${
-            isLoaded ? "opacity-95 hover:opacity-100" : "opacity-0"
+          style={{ transform: "translateZ(0)" }}
+          className={`w-full h-full border-0 transition-opacity duration-300 ${
+            isLoaded ? "opacity-100" : "opacity-0"
           }`}
-          allowFullScreen=""
+          allowFullScreen
         />
       )}
 
@@ -59,10 +82,10 @@ export const LazyMap = ({ embedUrl, externalUrl, address }) => {
           href={externalUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="absolute bottom-3 right-3 z-10 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-brand-cobalt/90 hover:bg-brand-emerald text-white text-[11px] font-semibold backdrop-blur-md border border-white/20 shadow-lg transition-all duration-200"
+          className="absolute bottom-3 right-3 z-10 inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-brand-cobalt/95 hover:bg-brand-emerald text-white text-xs font-semibold backdrop-blur-md border border-white/20 shadow-lg transition-all duration-200"
         >
           <span>Cómo llegar</span>
-          <ExternalLink className="w-3 h-3" />
+          <ExternalLink className="w-3.5 h-3.5" />
         </a>
       )}
     </div>
